@@ -1,4 +1,3 @@
-`include "full_adder.v"
 module mult_array_combinational (
     input   [3:0] a,
     input   [3:0] b,
