@@ -63,7 +63,8 @@ module tb_mult;
                 // 2-cycle latency: 1st posedge -> input regs, 2nd posedge -> output reg
                 @(posedge clk);
                 @(posedge clk);
-                #1;
+                // Sample half a cycle later so gate-level cell delays (UNIT_DELAY) have settled
+                @(negedge clk);
 
                 checked = checked + 1;
                 if (p !== expected) begin

@@ -1,4 +1,4 @@
-set lib $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+set lib $::env(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 yosys read_verilog rtl/full_adder.v rtl/mult_array.v
 yosys synth -top mult_array -flatten
