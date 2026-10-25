@@ -14,14 +14,20 @@ IIC-OSIC-TOOLS container, in the order listed.
 iverilog -V | head -1
 yosys -V
 sta -version
-echo $PDK_ROOT $PDK          # should show sky130A; if not: sak-pdk sky130A
+echo $PDK_ROOT $PDK        
+```
+## Docker CLI
+
+```sh
+docker run -it --rm -v "$PWD":/foss/designs/mult hpretl/iic-osic-tools:latest -s /bin/bash
+     
 ```
 
 ## Part A — RTL simulation
 
 ```sh
 iverilog -g2012 -o sim tb/tb_mult.v rtl/full_adder.v rtl/mult_array.v
-vvp sim                      # PASS: 256 vectors checked, 0 errors
+vvp sim                     
 gtkwave mult.vcd
 ```
 
@@ -35,10 +41,15 @@ yosys -c synth/synth.tcl
 
 CELLS=$PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/verilog
 iverilog -g2012 -DFUNCTIONAL -DUNIT_DELAY=#1 -o gls \
-  tb/tb_mult.v $CELLS/primitives.v $CELLS/sky130_fd_sc_hd.v synth/mult_array_netlist.v
+tb/tb_mult.v $CELLS/primitives.v $CELLS/sky130_fd_sc_hd.v synth/mult_array_netlist.v
 vvp gls
 ```
 
+## Part B — Synthesis and gate-level simulation
+```sh
+sta sta/sta.tcl                    
+CLK_PERIOD=2.51 sta sta/sta.tcl    
+```
 
 
 
