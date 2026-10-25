@@ -7,10 +7,10 @@ module mult_array_combinational (
     // Partial products
     wire [3:0] pp0, pp1, pp2, pp3;
 
-assign pp0 = a & {4{b[0]}};
-assign pp1 = a & {4{b[1]}};
-assign pp2 = a & {4{b[2]}};
-assign pp3 = a & {4{b[3]}};
+    assign pp0 = a & {4{b[0]}};
+    assign pp1 = a & {4{b[1]}};
+    assign pp2 = a & {4{b[2]}};
+    assign pp3 = a & {4{b[3]}};
 
     // Intermediate row sums and carries
     wire [3:0] r0, r1, r2;
