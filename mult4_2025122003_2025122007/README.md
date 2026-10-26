@@ -101,7 +101,9 @@ CLK_PERIOD=2.51 sta sta/sta.tcl
 ```sh
 librelane config.json 
 grep -E '"(design__core__area|design__instance__count|design__instance__count__stdcell|design__instance__count__class:[a-z_]+|route__wirelength|timing__setup__ws|timing__hold__ws|route__drc_errors|magic__drc_error__count|klayout__drc_error__count|design__lvs_error__count)":' metrics.json
+klayout mult_array.gds
 ```
+
 
 
 
